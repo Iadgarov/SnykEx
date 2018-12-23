@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>
+		Get your greeting <a href="/greeting">here</a>
+	</p>
+	<div th:fragment="submenu" th:remove="tag">
+		<ul>
+			<li th:each="option : ${menu.options}"><span
+				th:text="${option.label}">Town hall</span>
+				<div th:with="menu = ${option}"
+					th:include="includes/sidebar.html :: submenu" th:remove="tag" /></li>
+		</ul>
+	</div>
+</body>
+</html>
